@@ -1,0 +1,146 @@
+/* Initialize main height */
+#messagesContainer {
+    height: 513px;
+}
+
+/* *************************** */
+/* SIDEBAR OPENING AND CLOSING */
+/* *************************** */
+/* Sidebar active link style */
+.active {
+    background-color: #f0f0f0; /* Or any other styling you prefer */
+}
+
+/* Default styles for small screens (< 768px) */
+#sidebar {
+    min-width: 225px;
+    max-width: 225px;
+    position: fixed;
+    margin-left: -225px;
+    transition: margin-left 0.3s;
+    height: 100%;
+    z-index: 1000;
+    top: 0;
+}
+
+#sidebar.active {
+    margin-left: 0;
+}
+
+/* Styles for larger screens (≥ 768px) */
+@media (min-width: 768px) {
+    #sidebar {
+        position: relative;
+        margin-left: 0;
+        min-height: 100vh;
+    }
+
+    #sidebar.active {
+        margin-left: -225px;
+    }
+}
+
+.sticky-bottom {
+    transition: background-color 0.25s;
+}
+
+.sticky-bottom:hover {
+    background-color: #202123 !important;
+}
+
+.no-border {
+    border: none !important;
+}
+
+.hover-black:hover, .hover-black:focus,.hover-black:active {
+    background-color: black; 
+}
+
+/* *************************** */
+/* SIDEBAR COLLAPSE BUTTON     */
+/* *************************** */
+#sidebarCollapseBtn {
+    transform: translateX(-0.5em);
+    height: 50px;
+    width: 25px;
+    border: none !important;
+}
+
+/* .sidebar-collapse-bottom, .sidebar-collapse-top {
+    transition: transform 0.1s;
+} */
+
+.sidebar-collapse-bottom {
+    transform: translateY(-1px);
+}
+
+#sidebarCollapseBtn.hover-inactive:hover > .sidebar-collapse-top {
+    transform: rotate(25deg) translateY(2px);
+    height: 18px;
+    transition: transform 0.1s linear;
+}
+#sidebarCollapseBtn.hover-inactive:hover > .sidebar-collapse-bottom {
+    transform: rotate(-25deg) translateY(-2px);
+    height: 18px;
+    transition: transform 0.1s linear;
+}
+
+#sidebarCollapseBtn.hover-active:hover > .sidebar-collapse-top {
+    transform: rotate(-25deg) translateY(2px);
+    height: 18px;
+    transition: transform 0.1s linear;
+}
+#sidebarCollapseBtn.hover-active:hover > .sidebar-collapse-bottom {
+    transform: rotate(25deg) translateY(-2px);
+    height: 18px;
+    transition: transform 0.1s linear;
+}
+
+/* *************************** */
+/* SIDEBAR STYLES              */
+/* *************************** */
+.small-text {
+    font-size: 0.85rem;
+}
+
+.nav-link-hover {
+    transition: background-color 0.25s;
+}
+
+.nav-link-hover:hover {
+    background-color: #202123;
+}
+
+.nav-link-hover.active {
+    background-color: #343541;
+}
+
+/* *************************** */
+/* NAVBAR STYLES               */
+/* *************************** */
+.vr {
+    background-color: #000;
+    opacity: 1;
+}
+
+/* *************************** */
+/* TEXTAREA STYLES             */
+/* *************************** */
+#messageTextArea {
+    resize: none;
+    border: none;
+    box-shadow: none;
+}
+
+.close-symbol {
+    overflow: visible;
+    transform: translate(80%, -135%);
+}
+
+.tiny-text {
+    font-size: 0.65rem;
+}
+
+#chatFormContainer:focus-within {
+    border: 1px solid #000 !important;
+}
