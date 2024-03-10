@@ -9,7 +9,6 @@ import json
 import os
 
 
-
 bp = Blueprint('chat', __name__, url_prefix='/chat')
 
 @bp.route('/', methods=('POST', 'GET'))
@@ -24,9 +23,6 @@ def chat():
         if json_data:
             data = json.loads(json_data)
             prompt = data.get('prompt', '')
-            subject = data.get('subject', '')
-            # grade = data.get('grade', '')
-            number = data.get('number', '')
 
         if prompt == "":
             return "Stop sending me empty strings!"
@@ -40,7 +36,6 @@ def chat():
 
 
         print("Prompt: " + prompt)
-        print("Subject: " + subject)
         def stream():
             from openai import OpenAI
             client = OpenAI()

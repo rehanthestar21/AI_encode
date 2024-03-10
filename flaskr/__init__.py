@@ -25,7 +25,7 @@ def create_app(test_config=None):
     # Define the root route
     @app.route('/')
     def index():
-        return render_template('chat.html')
+        return render_template('chat/chat.html')
     
 
     from . import chat
