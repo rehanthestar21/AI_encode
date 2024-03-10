@@ -1,3 +1,8 @@
+
+from openai import OpenAI
+client = OpenAI()
+
+
 def ask(question):
   ''' Function to geneata question'''
   input_message = [

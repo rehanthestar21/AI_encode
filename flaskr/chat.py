@@ -8,8 +8,17 @@ import uuid
 import json
 import os
 
+from . import llm_agent
+
+
 
 bp = Blueprint('chat', __name__, url_prefix='/chat')
+
+import json
+with open('flaskr/static/loan_process.json') as json_file:
+    loan_process = json.load(json_file)
+
+agent = llm_agent.LLMAgent(loan_process)
 
 @bp.route('/', methods=('POST', 'GET'))
 def chat():
@@ -37,21 +46,7 @@ def chat():
 
         print("Prompt: " + prompt)
         def stream():
-            from openai import OpenAI
-            client = OpenAI()
-            response = client.chat.completions.create(
-                model="gpt-4-0125-preview",
-                messages=[
-                    {"role": "system", "content": "You are a helpful assistant."},
-                    {"role": "user", "content": prompt},
-                ],
-                stream=True
-                )
-            
-            for chunk in response:
-                answer = chunk.choices[0].delta.content
-                if answer is not None:
-                    yield answer
+            return agent.run(prompt)
                     
         return Response(stream(), content_type='text/plain; charset=utf-8')
     
